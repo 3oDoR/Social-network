@@ -2,31 +2,38 @@
 <#import "parts/login.ftl" as l>
 
 <@c.page>
-    <@l.logout/>
-<body>
-    <form method="post">
-        <input type="text" name="text" placeholder="Введите сообщение"/>
-        <input type="text" name="tag" placeholder="Тэг">
-        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button type="submit">Добавить</button>
-    </form>
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            <input type="text" name="text" placeholder="Введите сообщение"/>
+            <input type="text" name="tag" placeholder="Тэг">
+            <input type="file" name="file" required placeholder="">
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            <button type="submit">Добавить</button>
+        </form>
     </div>
     <div>Список сообщений</div>
-    <form method="post" action="filter">
-        <input type="text" name="filter">
-        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+    <form method="get" action="/main">
+        <input type="text" name="filter" value="${filter?ifExists}">
         <button type="submit">Найти</button>
     </form>
 
-    <#list messages as message>
-        <div>
-            <b>${message.id}</b>
-            <span>${message.text}</span>
-            <i>${message.tag}</i>
-            <strong>${message.authorName}</strong>
-        </div>
-    <#else>
-        No messages
-    </#list>
-</body>
+
+    <div class="card-columns">
+        <#list messages as message>
+            <div class="card my-3">
+                <img src="/img/${message.filename}" class="card-img-top">
+                <div class="m-2">
+
+                </div>
+                <div class="card-footer">
+                    <div> Author: ${message.authorName}</div>
+                    <div> Message: ${message.text}</div>
+                    <div> Hashtag:${message.tag}</div>
+
+                </div>
+            </div>
+        <#else>
+            No message
+        </#list>
+    </div>
 </@c.page>
