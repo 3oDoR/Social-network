@@ -2,20 +2,19 @@
 <#import "parts/login.ftl" as l>
 
 <@c.page>
-    <div>
-        <form method="post" enctype="multipart/form-data">
-            <input type="text" name="text" placeholder="Введите сообщение"/>
-            <input type="text" name="tag" placeholder="Тэг">
-            <input type="file" name="file" required placeholder="">
-            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-            <button type="submit">Добавить</button>
-        </form>
-    </div>
-    <div>Список сообщений</div>
+
+
     <form method="get" action="/main">
-        <input type="text" name="filter" value="${filter?ifExists}">
-        <button type="submit">Найти</button>
+        <div class="input-group mb-3">
+            <input type="text" name="filter" value="${filter?ifExists}" placeholder="Enter hashtag"
+                   class="form-control">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="submit">Find</button>
+            </div>
+        </div>
     </form>
+
+
 
 
     <div class="card-columns">

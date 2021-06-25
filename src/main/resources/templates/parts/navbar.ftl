@@ -14,7 +14,7 @@
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#"> Account <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/account"> Account <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="#"> Setting <span class="sr-only">(current)</span></a>

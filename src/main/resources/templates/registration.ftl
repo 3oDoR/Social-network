@@ -2,5 +2,5 @@
 <#import "parts/login.ftl" as l>
 
 <@c.page>
-<@l.registration/>
+    <@l.registration/>
 </@c.page>

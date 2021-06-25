@@ -44,10 +44,10 @@
         <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="First name">
+                    <input required type="text" class="form-control" placeholder="First name" name="firstname">
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Last name">
+                    <input required type="text" class="form-control" placeholder="Last name" name="surname">
                 </div>
             </div>
         </div>
@@ -55,11 +55,10 @@
         <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Email">
+                    <input required type="email" class="form-control" placeholder="Email" name="email">
                 </div>
                 <div class="col">
-                    <select name="gender" class="form-control">
-                        <option selected>Choose gender</option>
+                    <select required name="gender" class="form-control">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -70,10 +69,10 @@
         <div class="form-group">
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Username" name="username">
+                    <input required type="text" class="form-control" placeholder="Username" name="username">
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Password" name="password">
+                    <input required type="text" class="form-control" placeholder="Password" name="password">
                 </div>
             </div>
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
@@ -97,7 +96,7 @@
 
     <#if known>
         <form action="/logout" method="post" class="pl-4">
-            <input type="hidden" name="_csrf" value="${_csrf.token}" />
+            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
             <button class="btn btn-primary" type="submit">Sign Out</button>
         </form>
     </#if>
