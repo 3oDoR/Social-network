@@ -5,7 +5,6 @@
 
 <@c.page>
 
-    <div>Welcome, ${first_name} ${second_name}.</div>
 
 
         <form method="post" enctype="multipart/form-data">
