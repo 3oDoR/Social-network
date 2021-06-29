@@ -21,6 +21,7 @@ public class User implements UserDetails {
     private String email;
     private String gender;
     private String username;
+    private String avatar;
     private String password;
 
 
@@ -153,5 +154,13 @@ public class User implements UserDetails {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

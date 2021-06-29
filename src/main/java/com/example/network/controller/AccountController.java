@@ -9,17 +9,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.*;
-
-import static com.sun.org.apache.xml.internal.serializer.utils.Utils.messages;
 
 @Controller
 public class AccountController {
@@ -36,15 +32,15 @@ public class AccountController {
     }
 
     @GetMapping("/account")
-    public String account( @AuthenticationPrincipal User currentUser,
-                           Model model,
-                           @RequestParam(required = false) Message message) {
+    public String account(@AuthenticationPrincipal User currentUser,
+                          @RequestParam(required = false) Message message,
+                          Model model) {
 
         Iterable<Message> messages = messageRepo.findByAuthor(currentUser);
 
         model.addAttribute("messages", messages);
         model.addAttribute("message", message);
-
+        model.addAttribute("currentUser", currentUser);
 
         return "account";
     }
@@ -54,8 +50,7 @@ public class AccountController {
                       @RequestParam String text,
                       @RequestParam String tag,
                       @RequestParam("file") MultipartFile file,
-                      Map<String, Object> model
-    ) throws IOException {
+                      Model model) throws IOException {
 
         Message message = new Message(text, tag, user);
 
@@ -73,19 +68,18 @@ public class AccountController {
             file.transferTo(new File(uploadPath + "/" + resultFilename));
 
             message.setFilename(resultFilename);
+            message.setUser_like(0);
         }
 
         messageRepo.save(message);
 
         Iterable<Message> messages = messageRepo.findAll();
 
-        model.put("messages", messages);
+        model.addAttribute("messages", messages);
+        model.addAttribute("currentUser", user);
 
         return "account";
     }
-
-
-
 
 
 }

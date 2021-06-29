@@ -1,5 +1,6 @@
 <#include "security.ftl">
 <#import "login.ftl" as l>
+<#import "cards.ftl" as c>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -13,15 +14,19 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/account"> Account <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/setting"> Setting <span class="sr-only">(current)</span></a>
-            </li>
+            <#if name != "">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/account"> Account <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/setting"> Setting <span class="sr-only">(current)</span></a>
+                </li>
+            </#if>
         </ul>
+        <#if name != "">
+            <div class="navbar-text">${first_name} ${second_name}</div>
+        </#if>
 
-        <div class="navbar-text">${name}</div>
         <@l.logout />
     </div>
 </nav>

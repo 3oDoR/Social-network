@@ -1,4 +1,5 @@
 <#import "parts/common.ftl" as c>
+<#import "parts/cards.ftl" as ca>
 <#import "parts/login.ftl" as l>
 
 <@c.page>
@@ -14,25 +15,6 @@
         </div>
     </form>
 
-
-
-
-    <div class="card-columns">
-        <#list messages as message>
-            <div class="card my-3">
-                <img src="/img/${message.filename}" class="card-img-top">
-                <div class="m-2">
-
-                </div>
-                <div class="card-footer">
-                    <div> Author: ${message.authorName}</div>
-                    <div> Message: ${message.text}</div>
-                    <div> Hashtag:${message.tag}</div>
-
-                </div>
-            </div>
-        <#else>
-            No message
-        </#list>
-    </div>
+    <@ca.cards>
+    </@ca.cards>
 </@c.page>

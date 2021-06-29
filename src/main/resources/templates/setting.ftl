@@ -3,7 +3,7 @@
 
 
     <body>
-    <form action="/setting" method="post">
+    <form enctype="multipart/form-data" action="/setting" method="post">
 
         <div class="form-group">
             <div class="row">
@@ -47,6 +47,15 @@
                 </div>
             </div>
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+        </div>
+
+        <div class="form-group">
+        <div class="row">
+            <div class="col">
+                <div> avatar</div>
+            <input  type="file" class="form-control" name="file">
+            </div>
+        </div>
         </div>
 
         <div class="form-group">

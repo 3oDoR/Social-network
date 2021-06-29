@@ -1,6 +1,7 @@
 package com.example.network.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Message {
@@ -10,6 +11,9 @@ public class Message {
 
     private String text;
     private String tag;
+    @NotNull
+    private Integer user_like;
+    
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
@@ -69,5 +73,13 @@ public class Message {
 
     public void setFilename(String filename) {
         this.filename = filename;
+    }
+
+    public int getUser_like() {
+        return user_like;
+    }
+
+    public void setUser_like(int user_like) {
+        this.user_like = user_like;
     }
 }
