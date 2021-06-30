@@ -10,12 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.UUID;
 
 @Controller
 public class AccountController {
@@ -26,9 +28,11 @@ public class AccountController {
     private final MessageRepo messageRepo;
     private final UserRepo userRepo;
 
+
     public AccountController(MessageRepo messageRepo, UserRepo userRepo) {
         this.messageRepo = messageRepo;
         this.userRepo = userRepo;
+
     }
 
     @GetMapping("/account")
@@ -79,6 +83,13 @@ public class AccountController {
         model.addAttribute("currentUser", user);
 
         return "account";
+    }
+
+    @RequestMapping("/delete")
+    public String deletePost(@RequestParam Long id) {
+        messageRepo.deleteById(id);
+
+        return "redirect:/";
     }
 
 

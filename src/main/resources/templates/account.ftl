@@ -43,11 +43,13 @@
     <div class="card my-1 text-light bg-secondary">
         <div class="page-heading">
             <div class="media clearfix">
-                <div class="media-left pr15">
-                    <img class="media-object mw150 img-fluid img-responsive" src="/img/${currentUser.avatar}"
-                         value="/img/${currentUser.avatar}"
-                         width="300px" height="300px">
-                </div>
+                <#if currentUser.avatar??>
+                    <div class="media-left pr15">
+                        <img class="media-object mw150 img-fluid img-responsive" src="/img/${currentUser.avatar}"
+                             value="/img/${currentUser.avatar}"
+                             width="300px" height="300px">
+                    </div>
+                </#if>
                 <div class="media-body va-m">
                     <h2 class="media-heading pl-3">${currentUser.firstname} ${currentUser.surname}
                         <small> - Profile</small>

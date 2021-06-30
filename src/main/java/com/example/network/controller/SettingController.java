@@ -76,6 +76,7 @@ public class SettingController {
         }
         userRepo.save(currentUser);
 
+
         model.addAttribute("currentUser", currentUser);
         return "setting";
     }

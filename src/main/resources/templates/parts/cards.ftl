@@ -1,3 +1,4 @@
+<#include "security.ftl">
 <#macro cards >
 
 <div class="card-columns">
@@ -11,6 +12,10 @@
                 <div> Author: ${message.authorName}</div>
                 <div> Message: ${message.text}</div>
                 <div> Hashtag:${message.tag}</div>
+                <#if message.authorName == name>
+                <div><a href="/edit?id=${message.id}">Edit</a></div>
+                <div><a href="/delete?id=${message.id}">Delete</a></div>
+                </#if>
             </div>
         </div>
     <#else>
